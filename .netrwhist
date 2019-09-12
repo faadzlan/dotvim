@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/adzlan/OpenFOAM/adzlan-7/run/bestMeshToDate/straight00/U13'
+let g:netrw_dirhist_2='/home/adzlan/OpenFOAM/adzlan-7/run/bestMeshToDate/straight00/U13/system'
+let g:netrw_dirhist_3='/usr/share/vim/vim80/doc'
