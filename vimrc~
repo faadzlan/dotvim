@@ -21,7 +21,7 @@ if exists('skip_defaults_vim')
 endif
 
 " Install plugins here
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 call pathogen#helptags()
 
 "########################################################
@@ -200,6 +200,16 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Switch on line numbering.
 set number
+
+" Settings for vim-latex-live-preview plugin
+augroup myLatex
+autocmd!
+
+autocmd Filetype tex setl updatetime=1000
+
+augroup END
+
+let g:livepreview_previewer = 'open -a evince'
 
 augroup mySyntax
 autocmd!

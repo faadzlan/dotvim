@@ -201,6 +201,16 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Switch on line numbering.
 set number
 
+" Settings for vim-latex-live-preview plugin
+augroup myLatex
+autocmd!
+
+autocmd Filetype tex setl updatetime=5
+
+augroup END
+
+let g:livepreview_previewer = 'open -a evince'
+
 augroup mySyntax
 autocmd!
 
