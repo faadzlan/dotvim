@@ -21,7 +21,7 @@ if exists('skip_defaults_vim')
 endif
 
 " Install plugins here
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 call pathogen#helptags()
 
 "########################################################

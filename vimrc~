@@ -20,6 +20,10 @@ if exists('skip_defaults_vim')
   finish
 endif
 
+" Install plugins here
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 "########################################################
 "                                                       #
 "                      Vim defaults                     #
