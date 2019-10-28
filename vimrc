@@ -33,6 +33,11 @@ if has("autocmd")
   " Also load indent files, to automatically do language-dependent indenting.
   " Revert with ":filetype off".
   filetype plugin indent on
+  
+  " OPTIONAL; Starting with Vim 7, the filetype of empty .tex files defaults to
+  " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+  " The following changes the default filetype back to 'tex';
+  let g:tex_flavor='latex'
 
   " Put these in an autocmd group, so that you can revert them with:
   " ":augroup vimStartup | au! | augroup END"
