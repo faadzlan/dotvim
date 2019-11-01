@@ -93,12 +93,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Here I add my own command aliases
-alias cl='clear'
-alias ev='vim $HOME/.vim/vimrc'
-alias eb='vim $HOME/.bashrc'
-alias sb='source $HOME/.bashrc'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -130,36 +124,29 @@ source /opt/openfoam7/etc/bashrc
 # Point DISPLAY variable to the X server that is running
 export DISPLAY=:0
 
-# A list of aliases to important folders in the Windows directory.
-alias gmsh='cd /mnt/c/Users/alan_/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows'
-
-alias phda='cd /mnt/c/Users/alan_/OneDrive\ -\ UNIMAS/PhD\ Work/2017_2018_1'
-alias phdb='cd /mnt/c/Users/alan_/OneDrive\ -\ UNIMAS/PhD\ Work/2017_2018_2'
-alias phdc='cd /mnt/c/Users/alan_/OneDrive\ -\ UNIMAS/PhD\ Work/2018_2019_1'
-alias phdd='cd /mnt/c/Users/alan_/OneDrive\ -\ UNIMAS/PhD\ Work/2018_2019_2'
-alias phde='cd /mnt/c/Users/alan_/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1'
-alias doc='cd /mnt/c/Users/alan_/Documents'
-alias of1706='cd $(find /mnt/c/OpenFOAM/17.06/ -maxdepth 2 -type d -name run)'
-alias tlt225='cd /mnt/c/Users/alan_/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows/multiPlate/singlePlate/tiltedPlate22.5_ref2'
-
-# Export the *rc files to the Google Drive folder
-alias xrc='find $HOME -maxdepth 1 -name *rc | xargs -I '{}' cp '{}' /mnt/c/Users/alan_/Google\ Drive/rcFiles/'
-
-# Get *rc files from the Google Drive folder
-alias grc="find /mnt/c/Users -maxdepth 4 -type d -name 'rcFiles' | sed 's/Google\sDrive/Google\\ Drive/' | xargs -I '{}' find '{}' -type f | xargs -I '{}' cp '{}' $HOME"
-
-# Edit .vimrc file
-alias ev='vim $HOME/.vim/vimrc'
-
-#Edit .bashrc file
-alias eb='vim $HOME/.bashrc'
+# Set the windows username
+export WIN_USER=alan_
 
 #My list of environment variables.
-export DOCUMENTS=/mnt/c/Users/alan_/Documents
-export DOWNLOADS=/mnt/c/Users/alan_/Downloads
-export GMSH=/mnt/c/Users/alan_/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows
-export OF1706=/mnt/c/OpenFOAM/17.06/Adzlan-dev/run
+export DOCUMENTS=/mnt/c/Users/$WIN_USER/Documents
+export DOWNLOADS=/mnt/c/Users/$WIN_USER/Downloads
+export GMSH=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows
+
+# Here I add my own command aliases
+alias cl='clear'
+alias ev='vim $HOME/.vim/vimrc'
+alias eb='vim $HOME/.vim/bashrc'
+alias sb='source $HOME/.vim/bashrc'
+
+# A list of aliases to important folders in the Windows directory.
+alias gmsh='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows'
+alias phda='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2017_2018_1'
+alias phdb='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2017_2018_2'
+alias phdc='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2018_2019_1'
+alias phdd='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2018_2019_2'
+alias phde='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1'
+alias doc='cd /mnt/c/Users/$WIN_USER/Documents'
+alias of1706='cd $(find /mnt/c/OpenFOAM/17.06/ -maxdepth 2 -type d -name run)'
 
 #My little tweaking of the BASH prompt
 export PROMPT_DIRTRIM=2
-set -o vi
