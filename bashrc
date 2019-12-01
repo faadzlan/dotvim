@@ -125,11 +125,12 @@ source /opt/openfoam7/etc/bashrc
 export DISPLAY=:0
 
 # Set the windows username
-export WIN_USER=alan_
+export WIN_USER=$(find /mnt/c/Users -maxdepth 3 -type f -name winUserLocate | sed 's@/mnt/c/Users/\(.*\)/Documents/.*@\1@g')
 
 #My list of environment variables.
 export DOCUMENTS=/mnt/c/Users/$WIN_USER/Documents
 export DOWNLOADS=/mnt/c/Users/$WIN_USER/Downloads
+export DESKTOP=/mnt/c/Users/$WIN_USER/Desktop
 export GMSH=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows
 
 # Here I add my own command aliases
@@ -137,6 +138,7 @@ alias cl='clear'
 alias ev='vim $HOME/.vim/vimrc'
 alias eb='vim $HOME/.vim/bashrc'
 alias sb='source $HOME/.vim/bashrc'
+alias rb='find . -type f -name "*~" | xargs rm'
 
 # A list of aliases to important folders in the Windows directory.
 alias gmsh='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows'
