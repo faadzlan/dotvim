@@ -250,6 +250,15 @@ autocmd BufRead,BufNewFile *.geo inoremap ,ln ln# = newl; Line(ln#) = {<++>, <++
 "Create new surface
 autocmd BufRead,BufNewFile *.geo inoremap ,sf s# = news; Line Loop(s#) = {<++>, <++>, <++>, <++>}; Plane Surface(s#) = {s#};<Esc>
 
+
+augroup END
+
+augroup myLaTeX
+autocmd!
+
+" Execute Biber
+autocmd BufRead,BufNewFile *.tex nnoremap ,bb :!biber  <Left>
+
 augroup END
 
 " Search and replace all
