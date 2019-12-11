@@ -86,7 +86,7 @@ TexLet g:Tex_DebugLog = ''
 if has('osx') || has('macunix')
 	TexLet g:Tex_DefaultTargetFormat = 'pdf'
 else
-	TexLet g:Tex_DefaultTargetFormat = 'dvi'
+	TexLet g:Tex_DefaultTargetFormat = 'pdf'
 endif
 
 " A comma seperated list of formats which need multiple compilations to be
@@ -125,7 +125,7 @@ TexLet g:Tex_CompileRule_bib = g:Tex_BibtexFlavor . ' $*'
 
 " Set Tex_UseMakefile to 0 if you want to ignore the presence of a Makefile 
 " when deciding how to compile
-TexLet g:Tex_UseMakefile = 1
+TexLet g:Tex_UseMakefile = 0
 
 " }}}
 " ------------------------------------------------------------------------------ 

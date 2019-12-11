@@ -132,6 +132,7 @@ export DOCUMENTS=/mnt/c/Users/$WIN_USER/Documents
 export DOWNLOADS=/mnt/c/Users/$WIN_USER/Downloads
 export DESKTOP=/mnt/c/Users/$WIN_USER/Desktop
 export GMSH=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows
+export CURRENT=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport
 
 # Here I add my own command aliases
 alias cl='clear'
@@ -139,6 +140,7 @@ alias ev='vim $HOME/.vim/vimrc'
 alias eb='vim $HOME/.vim/bashrc'
 alias sb='source $HOME/.vim/bashrc'
 alias rb='find . -type f -name "*~" | xargs rm'
+alias ct='rm *.aux *.bbl *.log *.xml *.blg *~ *.bcf *.abs *.fls *.out *.gz *fdb_latexmk *.dvi'
 
 # A list of aliases to important folders in the Windows directory.
 alias gmsh='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows'
