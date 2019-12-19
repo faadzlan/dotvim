@@ -33,11 +33,7 @@ if has("autocmd")
   " Also load indent files, to automatically do language-dependent indenting.
   " Revert with ":filetype off".
   filetype plugin indent on
-  
-  " OPTIONAL; Starting with Vim 7, the filetype of empty .tex files defaults to
-  " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-  " The following changes the default filetype back to 'tex';
-  let g:tex_flavor='latex'
+
 
   " Put these in an autocmd group, so that you can revert them with:
   " ":augroup vimStartup | au! | augroup END"
@@ -56,6 +52,23 @@ if has("autocmd")
   augroup END
 
 endif " has("autocmd")
+
+" Vim-Instant-Markdown settings
+let g:instant_markdown_autostart = 0
+"let g:instant_markdown_slow = 1
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 0
+"let g:instant_markdown_mathjax = 1
+"let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+"let g:instant_markdown_autoscroll = 0
+"let g:instant_markdown_port = 8888
+"let g:instant_markdown_python = 1 
+  
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex';
+let g:tex_flavor='latex'
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -170,7 +183,7 @@ if has("autocmd")
   au!
 
   " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=80
+  autocmd FileType text setlocal textwidth=72
 
   augroup END
 
@@ -190,19 +203,29 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
-"
-" Map the <leader> key to "," (comma)
+" Map the <Leader> key to "," (comma)
 let mapleader =","
 
-" Splits open at the bottom and right, which is non-retarded, unlike vim
-" defaults.
+" Splits open at the bottom and right.
 set splitbelow splitright
 
 " Edit .vimrc file
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <Leader>ev :vsplit $MYVIMRC<Enter>
 
 " Source edited .vimrc file
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <Leader>sv :source $MYVIMRC<Enter>
+
+" Remap navigation keybindings and key-chords
+nnoremap 0 g0
+nnoremap j gj
+nnoremap k gk
+nnoremap $ g$
+
+" Remap window navigation keys-chords
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Switch on line numbering.
 set number
@@ -219,8 +242,8 @@ augroup END
 " Remap semicolon to colon
 nnoremap ; :
 nnoremap : ;
-inoremap ; :
-inoremap : ;
+" inoremap ; :
+" inoremap : ;
 vnoremap ; :
 vnoremap : ;
 
@@ -232,24 +255,22 @@ inoremap jk <Esc>
 " Set nohls
 set nohlsearch
 
-
 " Navigating with guides
-inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
-vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
-nnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+inoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
+vnoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
+nnoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
 
 augroup myGMSH
 autocmd!
 
 " Create new point
-autocmd BufRead,BufNewFile *.geo inoremap ,pt p# = newp; Point(p#) = {<++>, <++>, <++>, 1.0};<Esc>
+autocmd BufRead,BufNewFile *.geo inoremap <Leader>pt p# = newp; Point(p#) = {<++>, <++>, <++>, 1.0};<Esc>
 
 " Create new line
-autocmd BufRead,BufNewFile *.geo inoremap ,ln ln# = newl; Line(ln#) = {<++>, <++>};<Esc>
+autocmd BufRead,BufNewFile *.geo inoremap <Leader>ln ln# = newl; Line(ln#) = {<++>, <++>};<Esc>
 
 "Create new surface
-autocmd BufRead,BufNewFile *.geo inoremap ,sf s# = news; Line Loop(s#) = {<++>, <++>, <++>, <++>}; Plane Surface(s#) = {s#};<Esc>
-
+autocmd BufRead,BufNewFile *.geo inoremap <Leader>sf s# = news; Line Loop(s#) = {<++>, <++>, <++>, <++>}; Plane Surface(s#) = {s#};<Esc>
 
 augroup END
 
@@ -257,7 +278,14 @@ augroup myLaTeX
 autocmd!
 
 " Execute Biber
-autocmd BufRead,BufNewFile *.tex nnoremap ,bb :!biber  <Left>
+autocmd BufRead,BufNewFile *.tex nnoremap <Leader>bb :!biber  <Left>
+
+" Compile RMarkdown file
+autocmd Filetype rmd nnoremap <leader>m :w<Enter>:!echo<Space>"require(rmarkdown);<Space>render('<C-R>%')"<Space>\|<Space>R<Space>--vanilla<Enter>
+
+" Autosave markdown documents
+" autocmd TextChanged,TextChangedI <buffer> silent write
+
 
 augroup END
 
@@ -268,4 +296,4 @@ nnoremap sh :s/#//g<Left><Left>
 nnoremap sl :s///g<Left><Left><Left>
 
 "Bulk renumber line
-nnoremap <leader>rl 0df)k0yf)j0P0llt)j0
+nnoremap <Leader>rl 0df)k0yf)j0P0llt)j0

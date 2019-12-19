@@ -152,6 +152,8 @@ alias phde='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1'
 alias doc='cd /mnt/c/Users/$WIN_USER/Documents'
 alias des='cd /mnt/c/Users/$WIN_USER/Desktop'
 alias of1706='cd $(find /mnt/c/OpenFOAM/17.06/ -maxdepth 2 -type d -name run)'
+alias mkd='cd $DOCUMENTS/markdownDocuments'
+alias ltx='cd /mnt/c/Users/$WIN_USER/Documents/LaTeXDocuments'
 
 #My little tweaking of the BASH prompt
 export PROMPT_DIRTRIM=2
