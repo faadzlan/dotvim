@@ -295,5 +295,8 @@ nnoremap sh :s/#//g<Left><Left>
 " Search and replace in line
 nnoremap sl :s///g<Left><Left><Left>
 
-"Bulk renumber line
+" Bulk renumber line
 nnoremap <Leader>rl 0df)k0yf)j0P0llt)j0
+
+" Indent settings
+set shiftwidth=2    " Indents will have a width of 2
