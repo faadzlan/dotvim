@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/adzlan/OpenFOAM/adzlan-7/run/bestMeshToDate/straight00/U13'
 let g:netrw_dirhist_2='/home/adzlan/OpenFOAM/adzlan-7/run/bestMeshToDate/straight00/U13/system'
 let g:netrw_dirhist_3='/usr/share/vim/vim80/doc'
 let g:netrw_dirhist_4='/usr/share/vim/vim80'
 let g:netrw_dirhist_5='/mnt/c/Users/alan_/Downloads/FireShot'
+let g:netrw_dirhist_6='/mnt/c/Users/alan_/OneDrive - UNIMAS/PhD Work/gmsh-3.0.5-Windows/multiPlate/singlePlate/tiltedPlate67.5'

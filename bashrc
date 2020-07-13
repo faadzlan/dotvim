@@ -155,5 +155,17 @@ alias of1706='cd $(find /mnt/c/OpenFOAM/17.06/ -maxdepth 2 -type d -name run)'
 alias mkd='cd $DOCUMENTS/markdownDocuments'
 alias ltx='cd /mnt/c/Users/$WIN_USER/Documents/LaTeXDocuments'
 
-#My little tweaking of the BASH prompt
+# My little tweaking of the BASH prompt
 export PROMPT_DIRTRIM=2
+
+# Neofetch
+neofetch
+
+# Powerline-shell
+function _update_ps1() {
+  PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
