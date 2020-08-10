@@ -76,7 +76,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='ls --color=auto --group-directories-first'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -162,10 +162,14 @@ export PROMPT_DIRTRIM=2
 neofetch
 
 # Powerline-shell
-function _update_ps1() {
-  PS1=$(powerline-shell $?)
-}
-
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+# function _update_ps1() {
+#   PS1=$(powerline-shell $?)
+# }
+# 
+# if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+#   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+source /home/adzlan/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
