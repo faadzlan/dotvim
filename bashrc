@@ -122,7 +122,8 @@ fi
 source /opt/openfoam7/etc/bashrc
 
 # Point DISPLAY variable to the X server that is running
-export DISPLAY=:0
+# export DISPLAY=:0
+export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 
 # Set the windows username
 export WIN_USER=$(find /mnt/c/Users -maxdepth 3 -type f -name winUserLocate | sed 's@/mnt/c/Users/\(.*\)/Documents/.*@\1@g')
@@ -133,6 +134,7 @@ export DOWNLOADS=/mnt/c/Users/$WIN_USER/Downloads
 export DESKTOP=/mnt/c/Users/$WIN_USER/Desktop
 export GMSH=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows
 export CURRENT=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport
+export FIGURES=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport/figures
 
 # Here I add my own command aliases
 alias cl='clear'
@@ -153,13 +155,12 @@ alias doc='cd /mnt/c/Users/$WIN_USER/Documents'
 alias des='cd /mnt/c/Users/$WIN_USER/Desktop'
 alias of1706='cd $(find /mnt/c/OpenFOAM/17.06/ -maxdepth 2 -type d -name run)'
 alias mkd='cd $DOCUMENTS/markdownDocuments'
-alias ltx='cd /mnt/c/Users/$WIN_USER/Documents/LaTeXDocuments'
+alias cur='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport'
+alias fig='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport/figures'
 
 # My little tweaking of the BASH prompt
 export PROMPT_DIRTRIM=2
 
-# Neofetch
-neofetch
 
 # Powerline-shell
 # function _update_ps1() {
@@ -173,3 +174,6 @@ powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 source /home/adzlan/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+
+# Neofetch
+neofetch
