@@ -216,10 +216,10 @@ nnoremap <Leader>ev :vsplit $MYVIMRC<Enter>
 nnoremap <Leader>sv :source $MYVIMRC<Enter>
 
 " Remap navigation keybindings and key-chords
-nnoremap 0 g0
-nnoremap j gj
-nnoremap k gk
-nnoremap $ g$
+" nnoremap 0 g0
+" nnoremap j gj
+" nnoremap k gk
+" nnoremap $ g$
 
 " Remap window navigation keys-chords
 nnoremap <C-h> <C-w>h
@@ -244,8 +244,8 @@ nnoremap ; :
 nnoremap : ;
 " inoremap ; :
 " inoremap : ;
-vnoremap ; :
-vnoremap : ;
+" vnoremap ; :
+" vnoremap : ;
 
 " Remap Escape key to jk
 inoremap jk <Esc>
@@ -255,8 +255,9 @@ set rnu
 
 " Inspired by Luke Smith
 "
-" Set nohls
+" Settings pertaining to searches
 set nohlsearch
+set ignorecase
 
 " Navigating with guides
 inoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
