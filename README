@@ -6,7 +6,8 @@ Create symlinks:
 
     ln -s $HOME/.vim/vimrc $HOME/.vimrc
     ln -s $HOME/.vim/bashrc $HOME/.bashrc
-    ln -s $HOME/.vim/gvimrc $HOME/.gvimrc    
+    ln -s $HOME/.vim/gvimrc $HOME/.gvimrc
+    ln -s $HOME/.vim/vifmrc $HOME/.config/vifm/vifmrc
 
 Switch to the `$HOME/.vim` directory, and fetch submodules:
 
