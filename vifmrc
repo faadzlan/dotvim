@@ -461,3 +461,7 @@ nnoremap <f8> :delete<cr>
 " nnoremap <left> <nop>
 nnoremap ; :
 nnoremap : ;
+
+" Move easily between panes
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
