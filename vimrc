@@ -34,7 +34,6 @@ if has("autocmd")
   " Revert with ":filetype off".
   filetype plugin indent on
 
-
   " Put these in an autocmd group, so that you can revert them with:
   " ":augroup vimStartup | au! | augroup END"
   augroup vimStartup
@@ -103,7 +102,7 @@ silent! endwhile
 " Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
 
-set history=200		" keep 200 lines of command line history
+set history=2000        " keep 2000 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set wildmenu		" display completion matches in a status line
@@ -182,7 +181,7 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-  " For all text files set 'textwidth' to 78 characters.
+  " For all text files set 'textwidth' to 72 characters.
   autocmd FileType text setlocal textwidth=72
 
   augroup END
@@ -208,6 +207,16 @@ let mapleader =","
 
 " Splits open at the bottom and right.
 set splitbelow splitright
+
+" Search current directory recursively
+set path+=**
+
+" Set no backup for file being edited
+set nobackup
+set noswapfile
+
+" Remove pipes | that act as seperators on splits
+set fillchars+=vert:\ 
 
 " Edit .vimrc file
 nnoremap <Leader>ev :vsplit $MYVIMRC<Enter>
@@ -244,20 +253,23 @@ nnoremap ; :
 nnoremap : ;
 " inoremap ; :
 " inoremap : ;
-" vnoremap ; :
-" vnoremap : ;
+vnoremap ; :
+vnoremap : ;
 
 " Remap Escape key to jk
 inoremap jk <Esc>
 
 " Set relative numbering
-set rnu
+set relativenumber
 
 " Inspired by Luke Smith
 "
 " Settings pertaining to searches
 set nohlsearch
 set ignorecase
+
+" Line wrapping toggle
+nnoremap <F2> :set wrap!<CR>
 
 " Navigating with guides
 inoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
@@ -283,6 +295,8 @@ autocmd!
 
 " Execute Biber
 autocmd BufRead,BufNewFile *.tex nnoremap <Leader>bb :!biber  <Left>
+" Input degree (angle)
+autocmd BufRead,BufNewFile *.tex inoremap <Leader>ta \SI{}{\degree}<++><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 " Compile RMarkdown file
 autocmd Filetype rmd nnoremap <leader>m :w<Enter>:!echo<Space>"require(rmarkdown);<Space>render('<C-R>%')"<Space>\|<Space>R<Space>--vanilla<Enter>
@@ -293,8 +307,11 @@ autocmd Filetype rmd nnoremap <leader>m :w<Enter>:!echo<Space>"require(rmarkdown
 
 augroup END
 
-" Search and replace all
-nnoremap sh :s/#//g<Left><Left>
+" Search and replace entire file
+nnoremap sf :%s///g<Left><Left><Left>
+
+" Search and replace for GMSH
+nnoremap sg :s/#//g<Left><Left>
 
 " Search and replace in line
 nnoremap sl :s///g<Left><Left><Left>

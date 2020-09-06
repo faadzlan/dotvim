@@ -15,9 +15,15 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
+# auto change directory
+shopt -s autocd
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=100000
+HISTFILESIZE=200000
+
+# set vi mode in bash shell
+set -o vi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -121,6 +127,9 @@ fi
 # .bashrc file in the HOME directory
 source /opt/openfoam7/etc/bashrc
 
+# Set default editor
+export EDITOR=/usr/bin/vim
+
 # Point DISPLAY variable to the X server that is running
 # export DISPLAY=:0
 export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
@@ -144,6 +153,18 @@ alias sb='source $HOME/.vim/bashrc'
 alias rb='find . -type f -name "*~" | xargs rm'
 alias ct='rm *.aux *.bbl *.log *.xml *.blg *~ *.bcf *.abs *.fls *.out *.gz *fdb_latexmk *.dvi'
 
+# Navigation shortcuts
+alias ..='cd ..'
+alias 2.='cd ../..'
+alias 3.='cd ../../..'
+alias 4.='cd ../../../..'
+alias 5.='cd ../../../../..'
+alias 6.='cd ../../../../../..'
+alias 7.='cd ../../../../../../..'
+alias 8.='cd ../../../../../../../..'
+alias 9.='cd ../../../../../../../../..'
+alias 10.='cd ../../../../../../../../../..'
+
 # A list of aliases to important folders in the Windows directory.
 alias gmsh='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows'
 alias phda='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2017_2018_1'
@@ -153,14 +174,15 @@ alias phdd='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2018_2019_2'
 alias phde='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1'
 alias doc='cd /mnt/c/Users/$WIN_USER/Documents'
 alias des='cd /mnt/c/Users/$WIN_USER/Desktop'
+alias dow='cd /mnt/c/Users/$WIN_USER/Downloads'
 alias of1706='cd $(find /mnt/c/OpenFOAM/17.06/ -maxdepth 2 -type d -name run)'
 alias mkd='cd $DOCUMENTS/markdownDocuments'
 alias cur='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport'
 alias fig='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport/figures'
+alias app='cd ~/Documents/appliedEnergy2020'
 
 # My little tweaking of the BASH prompt
 export PROMPT_DIRTRIM=2
-
 
 # Powerline-shell
 # function _update_ps1() {
@@ -177,3 +199,6 @@ source /home/adzlan/.local/lib/python3.6/site-packages/powerline/bindings/bash/p
 
 # Neofetch
 neofetch
+
+# Broot
+source /home/adzlan/.config/broot/launcher/bash/br
