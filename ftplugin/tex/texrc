@@ -136,37 +136,39 @@ TexLet g:Tex_UseMakefile = 0
 " NOTE: latex-suite will automatically append file.<format> to these functions
 "       when calling them. The viewer therefore cannot accept arguments after
 "       the filename.
+
 " NOTE: Windows users:
 " 		Set your $PATH variable to include the full path to these programs.
-if has('win32')
-	TexLet g:Tex_ViewRule_ps = 'gsview32'
-	TexLet g:Tex_ViewRule_pdf = 'AcroRd32'
-	TexLet g:Tex_ViewRule_dvi = 'yap -1'
-elseif has('osx') || has('macunix')
-	" Let the system pick.  If you want, you can override the choice here.
-	TexLet g:Tex_ViewRule_ps = ''
-	TexLet g:Tex_ViewRule_pdf = ''
-	" TexLet g:Tex_ViewRule_pdf = 'Acrobat\ Reader\ 5.1'
-	TexLet g:Tex_ViewRule_dvi = ''
-	" Set this to 1 to disable opening a viewer with 'open -a'
-	" Note: If you do this, you need to specify viewers above
-	" TexLet g:Tex_TreatMacViewerAsUNIX = 1
-else
-	if executable('xdg-open')
-		TexLet g:Tex_ViewRule_ps = 'xdg-open'
-		TexLet g:Tex_ViewRule_pdf = 'xdg-open'
-		TexLet g:Tex_ViewRule_dvi = 'xdg-open'
-	else
-		TexLet g:Tex_ViewRule_ps = 'gv'
-		TexLet g:Tex_ViewRule_pdf = 'xpdf'
-	"	TexLet g:Tex_ViewRule_dvi = 'xdvi'
-                TexLet g:Tex_ViewRule_dvi = 'okular'
-	endif
-	" the option below specifies an editor for the dvi viewer while starting
-	" up the dvi viewer according to Dimitri Antoniou's tip on vim.sf.net (tip
-	" #225)
-	TexLet g:Tex_UseEditorSettingInDVIViewer = 0
-endif
+ if has('win32')
+ 	TexLet g:Tex_ViewRule_ps = 'gsview32'
+ 	TexLet g:Tex_ViewRule_pdf = 'AcroRd32'
+ 	TexLet g:Tex_ViewRule_dvi = 'yap -1'
+ elseif has('osx') || has('macunix')
+ 	" Let the system pick.  If you want, you can override the choice here.
+ 	TexLet g:Tex_ViewRule_ps = ''
+ 	TexLet g:Tex_ViewRule_pdf = ''
+ 	" TexLet g:Tex_ViewRule_pdf = 'Acrobat\ Reader\ 5.1'
+ 	TexLet g:Tex_ViewRule_dvi = ''
+ 	" Set this to 1 to disable opening a viewer with 'open -a'
+ 	" Note: If you do this, you need to specify viewers above
+ 	" TexLet g:Tex_TreatMacViewerAsUNIX = 1
+ else
+ 	if executable('xdg-open')
+ 		TexLet g:Tex_ViewRule_ps = 'xdg-open'
+ 		TexLet g:Tex_ViewRule_pdf = 'okular'
+ 		TexLet g:Tex_ViewRule_dvi = 'xdg-open'
+ 	else
+ 		TexLet g:Tex_ViewRule_ps = 'gv'
+ 		TexLet g:Tex_ViewRule_pdf = 'xpdf'
+ 		TexLet g:Tex_ViewRule_dvi = 'xdvi'
+ 	endif
+ 
+ 	" the option below specifies an editor for the dvi viewer while starting
+ 	" up the dvi viewer according to Dimitri Antoniou's tip on vim.sf.net (tip
+ 	" #225)
+ 	TexLet g:Tex_UseEditorSettingInDVIViewer = 0
+ endif
+
 " For unix systems or macunix systens with enabled Tex_TreatMacViewerAsUNIX:
 " Set this to 1 if you do not want to execute the viewer in the background
 " TexLet g:Tex_ExecuteUNIXViewerInForeground = 1

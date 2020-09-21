@@ -160,14 +160,14 @@ endif
 "                                                       #
 "########################################################
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file (restore to previous version)
-  if has('persistent_undo')
-    set undofile	" keep an undo file (undo changes after closing)
-  endif
-endif
+" if has("vms")
+"   set nobackup		" do not keep a backup file, use versions instead
+" else
+"   set backup		" keep a backup file (restore to previous version)
+"   if has('persistent_undo')
+"     set undofile	" keep an undo file (undo changes after closing)
+"   endif
+" endif
 
 " if &t_Co > 2 || has("gui_running")
 "  " Switch on highlighting the last used search pattern.
@@ -226,9 +226,11 @@ nnoremap <Leader>sv :source $MYVIMRC<Enter>
 
 " Remap navigation keybindings and key-chords
 " nnoremap 0 g0
-" nnoremap j gj
-" nnoremap k gk
 " nnoremap $ g$
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 " Remap window navigation keys-chords
 nnoremap <C-h> <C-w>h
