@@ -14,7 +14,7 @@ execute pathogen#infect()
 " call pathogen#helptags()
 
 " Switch syntax highlighting on when the terminal has colors or when using the
-" GUI (which always has colors).
+  "GUI (which always has colors).
 if &t_Co > 2 || has("gui_running")
   " Revert with ":syntax off".
   syntax on
@@ -112,7 +112,7 @@ set ttimeoutlen=100	" wait up to 100ms after Esc for special key
 
 " Show a few lines of context around the cursor.  Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
+set scrolloff=2
 
 " Do incremental searching when it's possible to timeout.
 if has('reltime')
@@ -227,10 +227,10 @@ nnoremap <Leader>sv :source $MYVIMRC<Enter>
 " Remap navigation keybindings and key-chords
 " nnoremap 0 g0
 " nnoremap $ g$
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
+" vnoremap j gj
+" vnoremap k gk
 
 " Remap window navigation keys-chords
 nnoremap <C-h> <C-w>h
@@ -274,9 +274,9 @@ set ignorecase
 nnoremap <F2> :set wrap!<CR>
 
 " Navigating with guides
-inoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
-vnoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
-nnoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
+" inoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
+" vnoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
+" nnoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
 
 augroup myGMSH
 autocmd!
@@ -297,8 +297,11 @@ autocmd!
 
 " Execute Biber
 autocmd BufRead,BufNewFile *.tex nnoremap <Leader>bb :!biber  <Left>
-" Input degree (angle)
+
+" Input shortcuts for LaTeX
 autocmd BufRead,BufNewFile *.tex inoremap <Leader>ta \SI{}{\degree}<++><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+autocmd BufRead,BufNewFile *.tex inoremap <Leader>si \SI{}{<++>}<++><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+autocmd BufRead,BufNewFile *.tex inoremap <Leader>tx \text{}<++><Left><Left><Left><Left><Left>
 
 " Compile RMarkdown file
 autocmd Filetype rmd nnoremap <leader>m :w<Enter>:!echo<Space>"require(rmarkdown);<Space>render('<C-R>%')"<Space>\|<Space>R<Space>--vanilla<Enter>
@@ -329,3 +332,17 @@ python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
 set laststatus=2
+
+" Vim-easymotion
+map <Leader><Leader>l <Plug>(easymotion-lineforward)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion Vim-easymotion
+
+" GVim options
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar

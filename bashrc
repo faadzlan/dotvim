@@ -144,6 +144,7 @@ export DESKTOP=/mnt/c/Users/$WIN_USER/Desktop
 export GMSH=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows
 export CURRENT=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport
 export FIGURES=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport/figures
+export POWERLINE=/home/adzlan/.local/lib/python3.6/site-packages/powerline
 
 # Here I add my own command aliases
 alias cl='clear'
@@ -182,7 +183,7 @@ alias fig='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/s
 alias app='cd ~/Documents/appliedEnergy2020'
 
 # My little tweaking of the BASH prompt
-export PROMPT_DIRTRIM=2
+export PROMPT_DIRTRIM=3
 
 # Powerline-shell
 # function _update_ps1() {
