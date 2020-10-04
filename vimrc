@@ -10,7 +10,7 @@
 "	    for OpenVMS:  sys$login:.vimrc
 
 " Install plugins here
-execute pathogen#infect()
+" execute pathogen#infect()
 " call pathogen#helptags()
 
 " Switch syntax highlighting on when the terminal has colors or when using the
@@ -267,10 +267,10 @@ set ignorecase
 " Line wrapping toggle
 nnoremap <F2> :set wrap!<CR>
 
-" Navigating with guides
-" inoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
-" vnoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
-" nnoremap <Leader><Leader> <Esc>/<++><Enter>"_c4l
+" Navigate with guides
+" inoremap <LocalLeader><LocalLeader> <Esc>/<+<CR>"_ca>
+" vnoremap <LocalLeader><LocalLeader> <Esc>/<+<CR>"_ca>
+" nnoremap <LocalLeader><LocalLeader> <Esc>/<+<CR>"_ca>
 
 augroup myGMSH
 autocmd!
@@ -320,6 +320,9 @@ nnoremap <Leader>rl 0df)k0yf)j0P0llt)j0
 " Indent settings
 set shiftwidth=2    " Indents will have a width of 2
 
+" LaTeX-Suite
+imap <C-Space> <Plug>IMAP_JumpForward
+
 " Powerline
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
@@ -327,6 +330,7 @@ python3 del powerline_setup
 set laststatus=2
 
 " Vim-easymotion
+map <LocalLeader> <Plug>(easymotion-prefix)
 map <LocalLeader>l <Plug>(easymotion-lineforward)
 map <LocalLeader>j <Plug>(easymotion-j)
 map <LocalLeader>k <Plug>(easymotion-k)
