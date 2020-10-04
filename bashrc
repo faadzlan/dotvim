@@ -23,7 +23,7 @@ HISTSIZE=100000
 HISTFILESIZE=200000
 
 # set vi mode in bash shell
-set -o vi
+# set -o vi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -179,27 +179,20 @@ alias dow='cd /mnt/c/Users/$WIN_USER/Downloads'
 alias of1706='cd $(find /mnt/c/OpenFOAM/17.06/ -maxdepth 2 -type d -name run)'
 alias mkd='cd $DOCUMENTS/markdownDocuments'
 alias cur='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport'
+alias whom='cd /mnt/c/Users/$WIN_USER'
 alias fig='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport/figures'
-alias app='cd ~/Documents/appliedEnergy2020'
+alias app='cd ~/documents/appliedEnergy2020'
 
 # My little tweaking of the BASH prompt
-export PROMPT_DIRTRIM=3
+export PROMPT_DIRTRIM=2
 
-# Powerline-shell
-# function _update_ps1() {
-#   PS1=$(powerline-shell $?)
-# }
-# 
-# if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-#   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-# fi
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 source /home/adzlan/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
 
 # Neofetch
-neofetch
+# neofetch
 
 # Broot
 source /home/adzlan/.config/broot/launcher/bash/br

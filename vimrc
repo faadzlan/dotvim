@@ -24,6 +24,9 @@ if &t_Co > 2 || has("gui_running")
   let c_comment_strings=1
 endif
 
+" Set VIM colorscheme
+colorscheme darkspectrum
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -52,18 +55,6 @@ if has("autocmd")
 
 endif " has("autocmd")
 
-" Vim-Instant-Markdown settings
-let g:instant_markdown_autostart = 0
-"let g:instant_markdown_slow = 1
-"let g:instant_markdown_open_to_the_world = 1
-"let g:instant_markdown_allow_unsafe_content = 1
-"let g:instant_markdown_allow_external_content = 0
-"let g:instant_markdown_mathjax = 1
-"let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
-"let g:instant_markdown_autoscroll = 0
-"let g:instant_markdown_port = 8888
-"let g:instant_markdown_python = 1 
-  
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex';
@@ -112,7 +103,7 @@ set ttimeoutlen=100	" wait up to 100ms after Esc for special key
 
 " Show a few lines of context around the cursor.  Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
-set scrolloff=2
+set scrolloff=0
 
 " Do incremental searching when it's possible to timeout.
 if has('reltime')
@@ -203,7 +194,10 @@ if has('syntax') && has('eval')
 endif
 
 " Map the <Leader> key to "," (comma)
-let mapleader =","
+let mapleader = ","
+
+" Map the <Leader> key to "<Space>" (space)
+let maplocalleader = " "
 
 " Splits open at the bottom and right.
 set splitbelow splitright
@@ -302,13 +296,12 @@ autocmd BufRead,BufNewFile *.tex nnoremap <Leader>bb :!biber  <Left>
 autocmd BufRead,BufNewFile *.tex inoremap <Leader>ta \SI{}{\degree}<++><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 autocmd BufRead,BufNewFile *.tex inoremap <Leader>si \SI{}{<++>}<++><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 autocmd BufRead,BufNewFile *.tex inoremap <Leader>tx \text{}<++><Left><Left><Left><Left><Left>
+autocmd BufRead,BufNewFile *.tex inoremap <Leader>kv KVIV<Space>
+autocmd BufRead,BufNewFile *.tex inoremap <Leader>sv SVIV<Space>
+autocmd BufRead,BufNewFile *.tex inoremap <Leader>rn $ \leq <++> \leq <++>$<++><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 " Compile RMarkdown file
 autocmd Filetype rmd nnoremap <leader>m :w<Enter>:!echo<Space>"require(rmarkdown);<Space>render('<C-R>%')"<Space>\|<Space>R<Space>--vanilla<Enter>
-
-" Autosave markdown documents
-" autocmd TextChanged,TextChangedI <buffer> silent write
-
 
 augroup END
 
@@ -334,10 +327,10 @@ python3 del powerline_setup
 set laststatus=2
 
 " Vim-easymotion
-map <Leader><Leader>l <Plug>(easymotion-lineforward)
-map <Leader><Leader>j <Plug>(easymotion-j)
-map <Leader><Leader>k <Plug>(easymotion-k)
-map <Leader><Leader>h <Plug>(easymotion-linebackward)
+map <LocalLeader>l <Plug>(easymotion-lineforward)
+map <LocalLeader>j <Plug>(easymotion-j)
+map <LocalLeader>k <Plug>(easymotion-k)
+map <LocalLeader>h <Plug>(easymotion-linebackward)
 
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion Vim-easymotion
 
@@ -346,3 +339,7 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
+
+" Thesaurus settings
+set thesaurus+=/home/adzlan/.vim/thesaurus/mthesaur.txt
+

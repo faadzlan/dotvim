@@ -1,3 +1,9 @@
 [submodule "pack/bundle/start/vim-easymotion"]
 	path = pack/bundle/start/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion.git
+[submodule "pack/bundle/start/thesaurus_query.vim"]
+	path = pack/bundle/start/thesaurus_query.vim
+	url = https://github.com/Ron89/thesaurus_query.vim.git
+[submodule "pack/bundle/start/vim-colorschemes"]
+	path = pack/bundle/start/vim-colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
