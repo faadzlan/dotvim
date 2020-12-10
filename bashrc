@@ -79,25 +79,14 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto --group-directories-first'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
+# Some ls aliases
+alias ls='exa --group-directories-first'
 alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias la='ls -a'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -141,16 +130,18 @@ export WIN_USER=$(find /mnt/c/Users -maxdepth 3 -type f -name winUserLocate | se
 export DOCUMENTS=/mnt/c/Users/$WIN_USER/Documents
 export DOWNLOADS=/mnt/c/Users/$WIN_USER/Downloads
 export DESKTOP=/mnt/c/Users/$WIN_USER/Desktop
-export GMSH=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows
-export CURRENT=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport
-export FIGURES=/mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport/figures
+export GMSH=/mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/gmsh-3.0.5-Windows
+export CURRENT=/mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/2019_2020_1/slantedPlateReport
+export FIGURES=/mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/2019_2020_1/slantedPlateReport/figures
 export POWERLINE=/home/adzlan/.local/lib/python3.6/site-packages/powerline
+export REPLYOE=/mnt/c/Users/alan_/OneDriveUNIMAS/PhDWork/2020_2021_1/OceanEngineering/replyToReviewers
 
 # Here I add my own command aliases
 alias cl='clear'
 alias ev='vim $HOME/.vim/vimrc'
 alias eb='vim $HOME/.vim/bashrc'
 alias sb='source $HOME/.vim/bashrc'
+alias mc='mc -P "/tmp/mc-$USER/mc.pwd.$$"; cd `cat /tmp/mc-$USER/mc.pwd.$$`; rm /tmp/mc-$USER/*'
 alias rb='find . -type f -name "*~" | xargs rm'
 alias ct='rm *.aux *.bbl *.log *.xml *.blg *~ *.bcf *.abs *.fls *.out *.gz *fdb_latexmk *.dvi'
 
@@ -167,25 +158,33 @@ alias 9.='cd ../../../../../../../../..'
 alias 10.='cd ../../../../../../../../../..'
 
 # A list of aliases to important folders in the Windows directory.
-alias gmsh='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/gmsh-3.0.5-Windows'
-alias phda='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2017_2018_1'
-alias phdb='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2017_2018_2'
-alias phdc='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2018_2019_1'
-alias phdd='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2018_2019_2'
-alias phde='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1'
+alias gmsh='cd /mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/gmsh-3.0.5-Windows'
+alias phda='cd /mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/2017_2018_1'
+alias phdb='cd /mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/2017_2018_2'
+alias phdc='cd /mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/2018_2019_1'
+alias phdd='cd /mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/2018_2019_2'
+alias phde='cd /mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/2019_2020_1'
+alias phdf='cd /mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/2020_2021_1'
 alias doc='cd /mnt/c/Users/$WIN_USER/Documents'
 alias des='cd /mnt/c/Users/$WIN_USER/Desktop'
 alias dow='cd /mnt/c/Users/$WIN_USER/Downloads'
 alias of1706='cd $(find /mnt/c/OpenFOAM/17.06/ -maxdepth 2 -type d -name run)'
-alias mkd='cd $DOCUMENTS/markdownDocuments'
-alias cur='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport'
+alias cur='cd /mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/2019_2020_1/slantedPlateReport'
 alias whom='cd /mnt/c/Users/$WIN_USER'
-alias fig='cd /mnt/c/Users/$WIN_USER/OneDrive\ -\ UNIMAS/PhD\ Work/2019_2020_1/slantedPlateReport/figures'
-alias app='cd ~/documents/appliedEnergy2020'
+alias fig='cd /mnt/c/Users/$WIN_USER/OneDriveUNIMAS/PhDWork/2019_2020_1/slantedPlateReport/figures'
+alias app='cd ~/Documents/appliedEnergy2020'
+alias rep='cd /mnt/c/Users/alan_/OneDriveUNIMAS/PhDWork/2020_2021_1/OceanEngineering/replyToReviewers'
+
+# Git aliases
+alias gst='git status'
+alias ga='git add'
+alias gcam='git commit -a -m'
+alias gcmsg='git commit -m'
 
 # My little tweaking of the BASH prompt
-export PROMPT_DIRTRIM=2
+export PROMPT_DIRTRIM=1
 
+# Powerline-status
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
@@ -196,3 +195,11 @@ source /home/adzlan/.local/lib/python3.6/site-packages/powerline/bindings/bash/p
 
 # Broot
 source /home/adzlan/.config/broot/launcher/bash/br
+
+# Use fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Use z.lua
+eval "$(lua /home/adzlan/.config/z.lua/z.lua --init bash)"
+export _ZL_ECHO=1
+alias zi='z -i'

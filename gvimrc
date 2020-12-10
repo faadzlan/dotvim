@@ -19,7 +19,7 @@ if filereadable("/etc/vim/gvimrc.local")
 endif
 
 " Set default fontface that renders a perfect powerline
-set guifont=UbuntuMono\ NF\ 12
+set guifont=UbuntuMono\ NF\ 13
 
 " Use color scheme that is easy on the eyes
-colorscheme darkspectrum
+colorscheme molokai

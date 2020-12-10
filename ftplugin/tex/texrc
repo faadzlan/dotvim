@@ -97,6 +97,10 @@ TexLet g:Tex_MultipleCompileFormats = 'dvi,pdf'
 
 " Uncomment this line if you compile ps files via dvi files.
 " TexLet g:Tex_FormatDependency_ps = 'dvi,ps'
+" TexLet g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
+
+" Uncomment this line if you compile pdf files via dvi files.
+" TexLet g:Tex_FormatDependency_pdf = 'dvi,pdf'
 
 " ------------------------------------------------------------------------------
 " Compiler rules {{{

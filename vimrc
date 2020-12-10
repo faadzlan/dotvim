@@ -1,18 +1,3 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2017 Sep 20
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
-" Install plugins here
-" execute pathogen#infect()
-" call pathogen#helptags()
-
 " Switch syntax highlighting on when the terminal has colors or when using the
   "GUI (which always has colors).
 if &t_Co > 2 || has("gui_running")
@@ -25,7 +10,7 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " Set VIM colorscheme
-colorscheme darkspectrum
+colorscheme molokai
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -150,21 +135,6 @@ endif
 "                        .vimrc                         #
 "                                                       #
 "########################################################
-
-" if has("vms")
-"   set nobackup		" do not keep a backup file, use versions instead
-" else
-"   set backup		" keep a backup file (restore to previous version)
-"   if has('persistent_undo')
-"     set undofile	" keep an undo file (undo changes after closing)
-"   endif
-" endif
-
-" if &t_Co > 2 || has("gui_running")
-"  " Switch on highlighting the last used search pattern.
-"  set hlsearch
-" endif
-
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -196,8 +166,8 @@ endif
 " Map the <Leader> key to "," (comma)
 let mapleader = ","
 
-" Map the <Leader> key to "<Space>" (space)
-let maplocalleader = " "
+" Map the <Leader> key to " " (space)
+" let maplocalleader = " "
 
 " Splits open at the bottom and right.
 set splitbelow splitright
@@ -266,6 +236,7 @@ set ignorecase
 
 " Line wrapping toggle
 nnoremap <F2> :set wrap!<CR>
+nnoremap <F3> :s/\v<(.)(\w*)/\u\1\L\2/g<CR>
 
 " Navigate with guides
 " inoremap <LocalLeader><LocalLeader> <Esc>/<+<CR>"_ca>
@@ -276,13 +247,13 @@ augroup myGMSH
 autocmd!
 
 " Create new point
-autocmd BufRead,BufNewFile *.geo inoremap <Leader>pt p# = newp; Point(p#) = {<++>, <++>, <++>, 1.0};<Esc>
+autocmd BufRead,BufNewFile *.geo inoremap <Leader>pnt p# = newp; Point(p#) = {<++>, <++>, <++>, 1.0};<Esc>
 
 " Create new line
-autocmd BufRead,BufNewFile *.geo inoremap <Leader>ln ln# = newl; Line(ln#) = {<++>, <++>};<Esc>
+autocmd BufRead,BufNewFile *.geo inoremap <Leader>lin ln# = newl; Line(ln#) = {<++>, <++>};<Esc>
 
 "Create new surface
-autocmd BufRead,BufNewFile *.geo inoremap <Leader>sf s# = news; Line Loop(s#) = {<++>, <++>, <++>, <++>}; Plane Surface(s#) = {s#};<Esc>
+autocmd BufRead,BufNewFile *.geo inoremap <Leader>srf s# = news; Line Loop(s#) = {<++>, <++>, <++>, <++>}; Plane Surface(s#) = {s#};<Esc>
 
 augroup END
 
@@ -296,17 +267,25 @@ autocmd BufRead,BufNewFile *.tex nnoremap <Leader>bb :!biber  <Left>
 autocmd BufRead,BufNewFile *.tex inoremap <Leader>ta \SI{}{\degree}<++><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 autocmd BufRead,BufNewFile *.tex inoremap <Leader>si \SI{}{<++>}<++><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 autocmd BufRead,BufNewFile *.tex inoremap <Leader>tx \text{}<++><Left><Left><Left><Left><Left>
-autocmd BufRead,BufNewFile *.tex inoremap <Leader>kv KVIV<Space>
-autocmd BufRead,BufNewFile *.tex inoremap <Leader>sv SVIV<Space>
-autocmd BufRead,BufNewFile *.tex inoremap <Leader>rn $ \leq <++> \leq <++>$<++><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+autocmd BufRead,BufNewFile *.tex inoremap kv KVIV<Space>
+autocmd BufRead,BufNewFile *.tex inoremap sv SVIV<Space>
+autocmd BufRead,BufNewFile *.tex nnoremap <Leader>rng a<CR><Esc>k:read /home/adzlan/Documents/snippets/quantityRange.tex<CR>kJ.F$;/<++><CR>"_ca>
+autocmd BufRead,BufNewFile *.tex nnoremap <Leader>fig :read /home/adzlan/Documents/snippets/latexFigure.tex<CR>/<++><CR>"_ca>
+autocmd BufRead,BufNewFile *.tex nnoremap <Leader>sfig :read /home/adzlan/Documents/snippets/latexSubfigure.tex<CR>/<++><CR>"_ca>
+autocmd BufRead,BufNewFile *.tex nnoremap <Leader>tab :read /home/adzlan/Documents/snippets/latexTable.tex<CR>/<++><CR>"_ca>
+autocmd BufRead,BufNewFile *.tex inoremap <Leader>cn \textcolor{blue}{}<++><Left><Left><Left><Left><Left>
+
+" Compiling in LaTeX-Suite
+autocmd InsertLeave,TextChanged *.tex write | echo "File saved :)"
+autocmd BufRead,BufNewFile *.tex nnoremap ;a :normal ,ll<CR>
 
 " Compile RMarkdown file
-autocmd Filetype rmd nnoremap <leader>m :w<Enter>:!echo<Space>"require(rmarkdown);<Space>render('<C-R>%')"<Space>\|<Space>R<Space>--vanilla<Enter>
+autocmd Filetype rmd nnoremap <Leader>m :w<Enter>:!echo<Space>"require(rmarkdown);<Space>render('<C-R>%')"<Space>\|<Space>R<Space>--vanilla<Enter>
 
 augroup END
 
 " Search and replace entire file
-nnoremap sf :%s///g<Left><Left><Left>
+nnoremap sfl :%s///g<Left><Left><Left>
 
 " Search and replace for GMSH
 nnoremap sg :s/#//g<Left><Left>
@@ -320,9 +299,6 @@ nnoremap <Leader>rl 0df)k0yf)j0P0llt)j0
 " Indent settings
 set shiftwidth=2    " Indents will have a width of 2
 
-" LaTeX-Suite
-imap <C-Space> <Plug>IMAP_JumpForward
-
 " Powerline
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
@@ -330,11 +306,11 @@ python3 del powerline_setup
 set laststatus=2
 
 " Vim-easymotion
-map <LocalLeader> <Plug>(easymotion-prefix)
-map <LocalLeader>l <Plug>(easymotion-lineforward)
-map <LocalLeader>j <Plug>(easymotion-j)
-map <LocalLeader>k <Plug>(easymotion-k)
-map <LocalLeader>h <Plug>(easymotion-linebackward)
+" map <Space> <Plug>(easymotion-prefix)
+" map <Space>l <Plug>(easymotion-lineforward)
+" map <Space>j <Plug>(easymotion-j)
+" map <Space>k <Plug>(easymotion-k)
+" map <Space>h <Plug>(easymotion-linebackward)
 
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion Vim-easymotion
 
