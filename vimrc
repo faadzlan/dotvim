@@ -300,10 +300,10 @@ nnoremap <Leader>rl 0df)k0yf)j0P0llt)j0
 set shiftwidth=2    " Indents will have a width of 2
 
 " Powerline
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-set laststatus=2
+" python3 from powerline.vim import setup as powerline_setup
+" python3 powerline_setup()
+" python3 del powerline_setup
+" set laststatus=2
 
 " Vim-easymotion
 " map <Space> <Plug>(easymotion-prefix)
